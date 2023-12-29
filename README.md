@@ -17,17 +17,26 @@ Interactive Menu:
 If the program is run without any command line arguments, then the interactive menu will be displayed. The commands for the menu are displayed in the console to the user by their command name followed by what the command does. The following are commands in the interactive menu:
 
 a – Add: This adds a record to the tree
+
 d – Delete: This prompts user to enter the record to be deleted
+
 b – Blocks: Displays number of blocks in the tree
-s – Search: This will search the records and report if the record exists or not
-and what the record contains if it exists
+
+s – Search: This will search the records and report if the record exists or not and what the record contains if it exists
+
 p – Print: This prints the tree
+
 l – Leaves: Prints the leaves of the tree
+
 e – Empty: Empties the tree
+
 h – Height: Displays height of the tree
+
 r – Record: modify a record
       m – Menu: Displays menu
+      
 V – verbose mode
+
 q – Quit: This exits the program 
 
 Data file configuration:
