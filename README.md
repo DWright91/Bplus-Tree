@@ -1,6 +1,4 @@
 # Bplus-Tree
-README.md    
-
 The purpose of this program is to give the user an interface with an assignment described database of zip-codes (keys), which includes records of various predefined fields residing in a .txt file, with certain functions including (insert, delete, modify, display methods to view all records, view a single record, view the total number of blocks, view used/unused space within a specified block, and commands that allow the user the ability to interact with the database while they're using it.
 Compilation Instruction: Create executable/runnable.
 -Navigate to directory: /home/STCLOUDSTATE/student-Id/path
