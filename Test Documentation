@@ -1,0 +1,299 @@
+#TEST DOCUMENTATION:
+
+B+ tree program to process the records and their fields.
+Test Data
+Command Line Arguments:
+The following are command flags:
+B+treeFileName – this will open an existing B+tree file or create a new one to be used
+dataFileName – this will open the data file to be used for the B+tree
+dataFile “I” or “D” - I signals that the data file should be added to the B+tree and D if the data file is to be deleted from the B+tree, this flag found in the header record
+blockSize – this will set the desired block size to use for the records
+debug – displays output from the functions to determine proper operation of functions
+Interactive Menu:
+If the program is run without any command line arguments, then the interactive menu will be displayed. The following are commands in the interactive menu:
+"Enter any of the following commands after the prompt > :
+<k> -- Insert <k> (an integer, <k> >= 0) as both key and value)
+i -- Insert key(integer) followed by Information (string, no spaces)
+f <k> -- Find the value under key <k>
+F -- Fills the tree with zipcodes.txt
+p <k> -- Print the path from the root to key k and its associated value.
+r <k1> <k2> -- Print the keys and values found in the range [<k1>, <k2>]
+d <k> -- Delete key <k> and its associated value.
+x -- Destroy the whole tree. Start again with an empty tree of the same order.
+t -- Print the B+ tree.
+l -- Print the keys of the leaves (bottom row of the tree).
+v -- Toggle output of pointer addresses (\"verbose\") in tree and leaves.
+q -- Quit.
+? -- Print this help message.
+The program will take the whole line as an input for the record. Each record inserted will be kept
+in the new line in file. The program will ask user to input zip code and city name and will put it in a Binary+ Tree.
+Test Run
+The user can perform four available operations with the file. User can open/read record , insert record in a file, delete record from a file, and print the information in the main.
+g++ main.cpp -o main
+>main
+//This screen will appear once the Program is compiled.
+//First of all, the program will ask the user to input the filename to open it.
+Input from file:
+>zipCodes.txt
+//If the file exists the following menu will be displayed, otherwise,
+//the program exits with “File does not exist” message.
+Enter any of the following commands after the prompt >:
+i <k> -- Insert <k> (an integer, <k> >= 0) as both key and value)
+i -- Insert key(integer) followed by Information (string, no spaces)
+f <k> -- Find the value under key <k>
+F -- Fills the tree with zipcodes.txt
+p <k> -- Print the path from the root to key k and its associated value.
+r <k1> <k2> -- Print the keys and values found in the range [<k1>, <k2>]
+d <k> -- Delete key <k> and its associated value.
+x -- Destroy the whole tree. Start again with an empty tree of the same order.
+t -- Print the B+ tree.
+l -- Print the keys of the leaves (bottom row of the tree).
+v -- Toggle output of pointer addresses (\"verbose\") in tree and leaves.
+q -- Quit.
+? -- Print this help message.
+//Checking if the contents of the file inputted by the user forms a tree
+//For that we print the whole B+ tree by entering t
+>t
+ZipC Place Name State County Latitude Longitude
+501Holtsville NY Suffolk 40.8154 -73.0451
+544Holtsville NY Suffolk 40.8154 -73.0451
+1001Agawam MA Hampden 42.0702 -72.6227
+1002Amherst MA Hampshire 42.3671 -72.4646
+1003Amherst MA Hampshire 42.3919 -72.5248
+1004Amherst MA Hampshire 42.3845 -72.5132
+1005Barre MA Worcester 42.4097 -72.1084
+1007Belchertown MA Hampshire 42.2751 -72.411
+1008Blandford MA Hampden 42.1829 -72.9361
+1009Bondsville MA Hampden 42.2061 -72.3405
+1010Brimfield MA Hampden 42.1165 -72.1885
+1011Chester MA Hampden 42.2794 -72.9888
+1012Chesterfield MA Hampshire 42.3923 -72.8256
+1013Chicopee MA Hampden 42.1487 -72.6079
+1014Chicopee MA Hampden 42.1707 -72.6048
+1020Chicopee MA Hampden 42.1764 -72.5761
+1021Chicopee MA Hampden 42.1707 -72.6048
+1022Chicopee MA Hampden 42.1934 -72.5544
+1026Cummington MA Hampshire 42.4633 -72.9202
+1027Easthampton MA Hampshire 42.2668 -72.669
+1028East Longmeadow MA Hampden 42.0672 -72.5056
+1029East Otis MA Berkshire 42.1909 -73.0517
+1030Feeding Hills MA Hampden 42.0718 -72.6751
+1031Gilbertville MA Worcester 42.3322 -72.1986
+1032Goshen MA Hampshire 42.4404 -72.7995
+1033Granby MA Hampshire 42.2557 -72.52
+1034Granville MA Hampden 42.1127 -72.952
+1035Hadley MA Hampshire 42.3606 -72.5715
+1036Hampden MA Hampden 42.0648 -72.4318
+1037Hardwick MA Worcester 42.3479 -72.2253
+1038Hatfield MA Hampshire 42.3844 -72.6167
+1039Haydenville MA Hampshire 42.3818 -72.7032
+1040Holyoke MA Hampden 42.202 -72.6262
+1041Holyoke MA Hampden 42.2043 -72.6162
+1050Huntington MA Hampshire 42.2653 -72.8733
+1053Leeds MA Hampshire 42.3543 -72.7034
+1054Leverett MA Franklin 42.4682 -72.4993
+1056Ludlow MA Hampden 42.1728 -72.471
+1057Monson MA Hampden 42.101 -72.3196
+1059North Amherst MA Hampshire 42.4104 -72.5309
+1060Northampton MA Hampshire 42.3223 -72.6313
+1061Northampton MA Hampshire 42.3696 -72.636
+1062Florence MA Hampshire 42.3219 -72.6928
+1063Northampton MA Hampshire 42.3179 -72.6402
+1066North Hatfield MA Hampshire 42.4067 -72.6339
+1068Oakham MA Worcester 42.348 -72.0513
+1069Palmer MA Hampden 42.1762 -72.3288
+1070Plainfield MA Hampshire 42.5144 -72.9183
+1071Russell MA Hampden 42.1471 -72.8403
+1072Shutesbury MA Franklin 42.482 -72.4213
+1073Southampton MA Hampshire 42.2247 -72.7194
+1074South Barre MA Worcester 42.3854 -72.0954
+1075South Hadley MA Hampshire 42.2375 -72.5811
+1077Southwick MA Hampden 42.0511 -72.7706
+1079Thorndike MA Hampden 42.1929 -72.3296
+1080Three Rivers MA Hampden 42.1819 -72.3624
+1081Wales MA Hampden 42.0627 -72.2046
+1082Ware MA Hampshire 42.2618 -72.2583
+1083Warren MA Worcester 42.204 -72.1994
+1084West Chesterfield MA Hampshire 42.3903 -72.8709
+1085Westfield MA Hampden 42.1251 -72.7495
+1086Westfield MA Hampden 42.1734 -72.848
+1088West Hatfield MA Hampshire 42.3906 -72.6469
+1089West Springfield MA Hampden 42.1151 -72.6411
+1090West Springfield MA Hampden 42.1707 -72.6048
+//The result shows that the file input is correct.
+//Now, if we select to insert a record into the tree, enter i
+>i
+Enter the key:
+> 56304
+Enter the information without spaces(Temporarily):
+>St Cloud
+//Checking if the information is correctly inserted in the tree by printing the tree
+>t
+ZipC Place Name State County Latitude Longitude
+501Holtsville NY Suffolk 40.8154 -73.0451
+544Holtsville NY Suffolk 40.8154 -73.0451
+1001Agawam MA Hampden 42.0702 -72.6227
+1002Amherst MA Hampshire 42.3671 -72.4646
+1003Amherst MA Hampshire 42.3919 -72.5248
+1004Amherst MA Hampshire 42.3845 -72.5132
+1005Barre MA Worcester 42.4097 -72.1084
+1007Belchertown MA Hampshire 42.2751 -72.411
+1008Blandford MA Hampden 42.1829 -72.9361
+1009Bondsville MA Hampden 42.2061 -72.3405
+1010Brimfield MA Hampden 42.1165 -72.1885
+1011Chester MA Hampden 42.2794 -72.9888
+1012Chesterfield MA Hampshire 42.3923 -72.8256
+1013Chicopee MA Hampden 42.1487 -72.6079
+1014Chicopee MA Hampden 42.1707 -72.6048
+1020Chicopee MA Hampden 42.1764 -72.5761
+1021Chicopee MA Hampden 42.1707 -72.6048
+1022Chicopee MA Hampden 42.1934 -72.5544
+1026Cummington MA Hampshire 42.4633 -72.9202
+1027Easthampton MA Hampshire 42.2668 -72.669
+1028East Longmeadow MA Hampden 42.0672 -72.5056
+1029East Otis MA Berkshire 42.1909 -73.0517
+1030Feeding Hills MA Hampden 42.0718 -72.6751
+1031Gilbertville MA Worcester 42.3322 -72.1986
+1032Goshen MA Hampshire 42.4404 -72.7995
+1033Granby MA Hampshire 42.2557 -72.52
+1034Granville MA Hampden 42.1127 -72.952
+1035Hadley MA Hampshire 42.3606 -72.5715
+1036Hampden MA Hampden 42.0648 -72.4318
+1037Hardwick MA Worcester 42.3479 -72.2253
+1038Hatfield MA Hampshire 42.3844 -72.6167
+1039Haydenville MA Hampshire 42.3818 -72.7032
+1040Holyoke MA Hampden 42.202 -72.6262
+1041Holyoke MA Hampden 42.2043 -72.6162
+1050Huntington MA Hampshire 42.2653 -72.8733
+1053Leeds MA Hampshire 42.3543 -72.7034
+1054Leverett MA Franklin 42.4682 -72.4993
+1056Ludlow MA Hampden 42.1728 -72.471
+1057Monson MA Hampden 42.101 -72.3196
+1059North Amherst MA Hampshire 42.4104 -72.5309
+1060Northampton MA Hampshire 42.3223 -72.6313
+1061Northampton MA Hampshire 42.3696 -72.636
+1062Florence MA Hampshire 42.3219 -72.6928
+1063Northampton MA Hampshire 42.3179 -72.6402
+1066North Hatfield MA Hampshire 42.4067 -72.6339
+1068Oakham MA Worcester 42.348 -72.0513
+1069Palmer MA Hampden 42.1762 -72.3288
+1070Plainfield MA Hampshire 42.5144 -72.9183
+1071Russell MA Hampden 42.1471 -72.8403
+1072Shutesbury MA Franklin 42.482 -72.4213
+1073Southampton MA Hampshire 42.2247 -72.7194
+1074South Barre MA Worcester 42.3854 -72.0954
+1075South Hadley MA Hampshire 42.2375 -72.5811
+1077Southwick MA Hampden 42.0511 -72.7706
+1079Thorndike MA Hampden 42.1929 -72.3296
+1080Three Rivers MA Hampden 42.1819 -72.3624
+1081Wales MA Hampden 42.0627 -72.2046
+1082Ware MA Hampshire 42.2618 -72.2583
+1083Warren MA Worcester 42.204 -72.1994
+1084West Chesterfield MA Hampshire 42.3903 -72.8709
+1085Westfield MA Hampden 42.1251 -72.7495
+1086Westfield MA Hampden 42.1734 -72.848
+1088West Hatfield MA Hampshire 42.3906 -72.6469
+1089West Springfield MA Hampden 42.1151 -72.6411
+1090West Springfield MA Hampden 42.1707 -72.6048
+56304St Cloud MN Sherburne
+//The record is successfully inserted into the tree.
+//Now, for removing a record, enter d <key>, the “key” being its zip code
+>d1085
+//Checking if the record is deleted by printing the tree again
+>t
+ZipC Place Name State County Latitude Longitude
+501Holtsville NY Suffolk 40.8154 -73.0451
+544Holtsville NY Suffolk 40.8154 -73.0451
+1001Agawam MA Hampden 42.0702 -72.6227
+1002Amherst MA Hampshire 42.3671 -72.4646
+1003Amherst MA Hampshire 42.3919 -72.5248
+1004Amherst MA Hampshire 42.3845 -72.5132
+1005Barre MA Worcester 42.4097 -72.1084
+1007Belchertown MA Hampshire 42.2751 -72.411
+1008Blandford MA Hampden 42.1829 -72.9361
+1009Bondsville MA Hampden 42.2061 -72.3405
+1010Brimfield MA Hampden 42.1165 -72.1885
+1011Chester MA Hampden 42.2794 -72.9888
+1012Chesterfield MA Hampshire 42.3923 -72.8256
+1013Chicopee MA Hampden 42.1487 -72.6079
+1014Chicopee MA Hampden 42.1707 -72.6048
+1020Chicopee MA Hampden 42.1764 -72.5761
+1021Chicopee MA Hampden 42.1707 -72.6048
+1022Chicopee MA Hampden 42.1934 -72.5544
+1026Cummington MA Hampshire 42.4633 -72.9202
+1027Easthampton MA Hampshire 42.2668 -72.669
+1028East Longmeadow MA Hampden 42.0672 -72.5056
+1029East Otis MA Berkshire 42.1909 -73.0517
+1030Feeding Hills MA Hampden 42.0718 -72.6751
+1031Gilbertville MA Worcester 42.3322 -72.1986
+1032Goshen MA Hampshire 42.4404 -72.7995
+1033Granby MA Hampshire 42.2557 -72.52
+1034Granville MA Hampden 42.1127 -72.952
+1035Hadley MA Hampshire 42.3606 -72.5715
+1036Hampden MA Hampden 42.0648 -72.4318
+1037Hardwick MA Worcester 42.3479 -72.2253
+1038Hatfield MA Hampshire 42.3844 -72.6167
+1039Haydenville MA Hampshire 42.3818 -72.7032
+1040Holyoke MA Hampden 42.202 -72.6262
+1041Holyoke MA Hampden 42.2043 -72.6162
+1050Huntington MA Hampshire 42.2653 -72.8733
+1053Leeds MA Hampshire 42.3543 -72.7034
+1054Leverett MA Franklin 42.4682 -72.4993
+1056Ludlow MA Hampden 42.1728 -72.471
+1057Monson MA Hampden 42.101 -72.3196
+1059North Amherst MA Hampshire 42.4104 -72.5309
+1060Northampton MA Hampshire 42.3223 -72.6313
+1061Northampton MA Hampshire 42.3696 -72.636
+1062Florence MA Hampshire 42.3219 -72.6928
+1063Northampton MA Hampshire 42.3179 -72.6402
+1066North Hatfield MA Hampshire 42.4067 -72.6339
+1068Oakham MA Worcester 42.348 -72.0513
+1069Palmer MA Hampden 42.1762 -72.3288
+1070Plainfield MA Hampshire 42.5144 -72.9183
+1071Russell MA Hampden 42.1471 -72.8403
+1072Shutesbury MA Franklin 42.482 -72.4213
+1073Southampton MA Hampshire 42.2247 -72.7194
+1074South Barre MA Worcester 42.3854 -72.0954
+1075South Hadley MA Hampshire 42.2375 -72.5811
+1077Southwick MA Hampden 42.0511 -72.7706
+1079Thorndike MA Hampden 42.1929 -72.3296
+1080Three Rivers MA Hampden 42.1819 -72.3624
+1081Wales MA Hampden 42.0627 -72.2046
+1082Ware MA Hampshire 42.2618 -72.2583
+1083Warren MA Worcester 42.204 -72.1994
+1084West Chesterfield MA Hampshire 42.3903 -72.8709
+1086Westfield MA Hampden 42.1734 -72.848
+1088West Hatfield MA Hampshire 42.3906 -72.6469
+1089West Springfield MA Hampden 42.1151 -72.6411
+1090West Springfield MA Hampden 42.1707 -72.6048
+56304St Cloud MN Sherburne
+//The record entered is successfully deleted.
+//Now, to display the menu again, enter ?
+>?
+Enter any of the following commands after the prompt >:
+i <k> -- Insert <k> (an integer, <k> >= 0) as both key and value)
+i -- Insert key(integer) followed by Information (string, no spaces)
+f <k> -- Find the value under key <k>
+F -- Fills the tree with zipcodes.txt
+p <k> -- Print the path from the root to key k and its associated value.
+r <k1> <k2> -- Print the keys and values found in the range [<k1>, <k2>]
+d <k> -- Delete key <k> and its associated value.
+x -- Destroy the whole tree. Start again with an empty tree of the same order.
+t -- Print the B+ tree.
+l -- Print the keys of the leaves (bottom row of the tree).
+v -- Toggle output of pointer addresses (\"verbose\") in tree and leaves.
+q -- Quit.
+? -- Print this help message.
+//To destroy the whole tree, enter x
+>x
+//Checking if the tree is destroyed
+>t
+Input from file:
+//Empty output means the tree is destroyed. The program then provides an option to re-make the //B+ tree to the user.
+//To find the value under key, enter f<k>, with k being the zipcode
+>f56304
+56304St Cloud MN Sherburne
+//The program prints the key’s information to the screen.
+//To quit the program, enter q
+>q
+
